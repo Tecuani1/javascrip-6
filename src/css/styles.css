@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+.avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.avatarCell {
+    width: min-content;
+}
+
+.idCell {
+    width: min-content;
+}
+
+table {
+    width: 100%;
+    margin: 20px;
+    font-size: 16px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #f5f5f5;
+    color: #333;
+    font-weight: 500;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Spinner styles */
+.spinner {
+    border: 8px solid #f3f3f3; /* Color de fondo */
+    border-top: 8px solid #3498db; /* Color del spinner */
+    border-radius: 50%;
+    width: 40px; /* Tamaño del spinner */
+    height: 40px; /* Tamaño del spinner */
+    animation: spin 1s linear infinite; /* Animación */
+    position: absolute; /* Posición */
+    top: 50%; /* Centrado vertical */
+    left: 50%; /* Centrado horizontal */
+    margin-top: -20px; /* Ajuste para centrar */
+    margin-left: -20px; /* Ajuste para centrar */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    display: none; /* Por defecto, el spinner está oculto */
+}
+
+.show-spinner {
+    display: block; /* Mostrar el spinner */
+}
+
+.hide-spinner {
+    display: none; /* Ocultar el spinner */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
