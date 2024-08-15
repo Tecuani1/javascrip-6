@@ -1,85 +1,258 @@
+:root {
+  /* Colores */
+  --color-background: #f1f3f4;
+  --color-primary-bg: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-border: #ccc;
+  --color-border-hover: #4285f4;
+  --color-header-text: rgb(0, 0, 0);
+  --color-hover-bg: #e8f0fe;
+  --color-even-row-bg: #f9f9f9;
+  --color-text: #202124;
+  --color-btn-bg: #c2e7ff;
+  --color-btn-text: black;
+  --color-spinner-border: #f3f3f3;
+  --color-spinner-border-top: #3498db;
+  --color-loading-text: #333;
+
+  /* Tamaños */
+  --font-size-base: 14px;
+  --font-size-header: 16px;
+  --font-size-loading-text: 16px;
+  --padding-base: 12px;
+  --border-radius: 8px;
+  --margin: 20px;
+  --table-margin: 20px 0;
+  --spinner-size: 40px;
+  --spinner-border-width: 8px;
+  --form-padding: 30px;
+  --container-width: 90%;
+  --container-max-width: 1200px;
+  --container-max-height: 90vh;
+
+  /* Otros */
+  --transition-speed: 0.2s;
+  --box-shadow-main: 0 4px 20px var(--color-shadow);
+  --box-shadow-btn-hover: 0 4px 8px rgba(84, 85, 85, 0.918);
+}
+
+/* Estilos generales del body */
 body {
-    background-color: rgb(255, 255, 255);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
+  background-color: var(--color-background);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
 }
 
+/* Contenedor principal */
 .main-cont {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1200px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    position: relative;
-}
-.avatar {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-}
-
-.avatarCell {
-    width: min-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: var(--container-width);
+  max-width: var(--container-max-width);
+  background-color: var(--color-primary-bg);
+  box-shadow: var(--box-shadow-main);
+  border-radius: var(--border-radius);
+  padding: var(--form-padding);
+  overflow-y: auto;
+  height: auto;
+  max-height: var(--container-max-height);
 }
 
-.idCell {
-    width: min-content;
-}
-
+/* Estilo general de la tabla */
 table {
-    width: 100%;
-    margin: 20px;
-    font-size: 16px;
-    text-align: left;
-    border-collapse: collapse;
+  width: 100%;
+  margin: var(--table-margin);
+  font-size: var(--font-size-header);
+  text-align: left;
+  border-collapse: collapse;
+  border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
+/* Estilo para los encabezados de las columnas */
 th {
-    background-color: #f5f5f5;
-    color: #333;
-    font-weight: 500;
+  color: var(--color-header-text);
+  font-weight: 600;
+  padding: var(--padding-base) 15px;
+  text-transform: uppercase;
+}
+
+/* Estilo para las filas */
+tr {
+  transition: background-color var(--transition-speed) ease;
 }
 
 tr:nth-child(even) {
-    background-color: #fafafa;
+  background-color: var(--color-even-row-bg);
 }
 
+/* Efecto hover en las filas */
 tr:hover {
-    background-color: #f1f1f1;
+  background-color: var(--color-hover-bg);
+}
+
+/* Estilo para las celdas de datos */
+td {
+  padding: var(--padding-base) 15px;
+}
+
+/* Estilo para la imagen del avatar */
+.avatar-img {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Estilos específicos para cada columna */
+.idCell {
+  width: 10%;
+}
+
+.nameCell {
+  width: 20%;
+}
+
+.emailCell {
+  width: 20%;
+}
+
+.phoneCell {
+  width: 20%;
+}
+
+.jobCompanyCell {
+  width: 30%;
 }
 
 /* Spinner styles */
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
 .spinner {
-    border: 8px solid #f3f3f3; /* Color de fondo */
-    border-top: 8px solid #3498db; /* Color del spinner */
-    border-radius: 50%;
-    width: 40px; /* Tamaño del spinner */
-    height: 40px; /* Tamaño del spinner */
-    animation: spin 1s linear infinite; /* Animación */
-    position: absolute; /* Posición */
-    top: 50%; /* Centrado vertical */
-    left: 50%; /* Centrado horizontal */
-    margin-top: -20px; /* Ajuste para centrar */
-    margin-left: -20px; /* Ajuste para centrar */
-    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
-    display: none; /* Por defecto, el spinner está oculto */
+  border: var(--spinner-border-width) solid var(--color-spinner-border);
+  border-top: var(--spinner-border-width) solid var(--color-spinner-border-top);
+  border-radius: 50%;
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  animation: spin 1s linear infinite;
+}
+
+.loading-text {
+  margin-top: 10px;
+  font-size: var(--font-size-loading-text);
+  color: var(--color-loading-text);
 }
 
 .show-spinner {
-    display: block; /* Mostrar el spinner */
+  display: flex;
 }
 
 .hide-spinner {
-    display: none; /* Ocultar el spinner */
+  display: none;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
+/* Estilo del botón */
+.create-contact-btn {
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  padding: var(--padding-base) 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.create-contact-btn:hover {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+
+/* Estilos para el formulario */
+.contact-form {
+  margin-top: var(--margin);
+  padding: var(--form-padding);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary-bg);
+  width: 100%;
+  box-shadow: 0 2px 10px var(--color-shadow);
+}
+
+.contact-form .form-group {
+  margin-bottom: var(--margin);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  margin-left: var(--margin);
+  margin-right: var(--margin);
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.contact-form input {
+  width: 100%;
+  padding: var(--padding-base);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-border);
+  box-sizing: border-box;
+  font-size: var(--font-size-base);
+}
+
+.contact-form input:focus {
+  outline: none;
+  border-color: var(--color-border-hover);
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.5);
+}
+
+.contact-form button {
+  background-color: var(--color-btn-bg);
+  color: var(--color-btn-text);
+  padding: var(--padding-base) 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.contact-form button:hover {
+  box-shadow: var(--box-shadow-btn-hover);
+}
+
+.hide-form {
+  display: none;
+}
