@@ -146,27 +146,6 @@ function toggleButtonState(button, isDisabled) {
   }
 }
 
-// En la función makeRequest, actualiza el botón al final de la petición
-function makeRequest(url, options = {}, callback) {
-  statusSpinner(true);
-  const saveButton = document.getElementById('saveBtn');
-  toggleButtonState(saveButton, true); // Deshabilitar el botón
-
-  fetch(url, options)
-    .then((res) => {
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      return res.json(); // Convierte la respuesta a JSON
-    })
-    .then(callback) // Ejecuta la función callback pasada
-    .catch(handleError)
-    .finally(() => {
-      statusSpinner(false);
-      toggleButtonState(saveButton, false); // Habilitar el botón
-    });
-}
-
 // En la función submitContactForm, asegúrate de llamar a toggleButtonState
 function submitContactForm(event) {
   event.preventDefault();
@@ -174,19 +153,19 @@ function submitContactForm(event) {
   const saveButton = document.getElementById('saveBtn');
   toggleButtonState(saveButton, true); // Deshabilitar el botón al enviar el formulario
 
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
+  const first_name = document.getElementById('firstName').value;
+  const last_name = document.getElementById('lastName').value;
   const email = document.getElementById('email').value;
   const company = document.getElementById('company').value;
-  const jobTitle = document.getElementById('jobTitle').value;
-
+  const job_title = document.getElementById('jobTitle').value;
+  
   const formData = {
-    first_name: firstName,
-    last_name: lastName,
-    company: company,
-    job_title: jobTitle,
-    email: email,
-  };
+    first_name,
+    last_name,
+    company,
+    job_title,
+    email,
+  };  
 
   makeRequest(
     link,
