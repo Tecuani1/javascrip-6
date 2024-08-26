@@ -1,21 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Manager</title>
     <link rel="stylesheet" href="/src/css/styles.css" />
-</head>
-<body>
+    <link rel="icon" href="/src/img/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
     <div class="main-cont">
-        <div id="spinner" class="spinner hide-spinner"></div> <!-- Spinner -->
-        <table>
-            <thead>
-                <tr></tr>
-            </thead>
-            <tbody id="user-list"></tbody>
-        </table>
-    </div>    
+      <div id="spinner" class="spinner-container">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading contacts...</p>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <!-- Columna vacía para el avatar/inicial -->
+            <th>Name</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Job Title</th>
+          </tr>
+        </thead>
+        <tbody id="user-list"></tbody>
+      </table>
+      <!-- Formulario de creación de contactos -->
+      <form class="contact-form hide-form" id="contact-form">
+        <div class="form-container">
+          <div class="form-row">
+            <div class="form-group">
+              <div class="icon">
+                <img src="/src/img/person.svg" alt="Icono Nombre" />
+              </div>
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" name="firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" name="lastName" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <div class="icon">
+                <img src="/src/img/domain.svg" alt="Icono Compañía" />
+              </div>
+              <label for="company">Company</label>
+              <input type="text" id="company" name="company" />
+            </div>
+            <div class="form-group">
+              <label for="jobTitle">Job title</label>
+              <input type="text" id="jobTitle" name="jobTitle" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <div class="icon">
+                <img src="/src/img/mail.svg" alt="Icono Email" />
+              </div>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+          </div>
+          <button type="submit" id="saveBtn" disabled>Save</button>
+        </div>
+      </form>
+    </div>
     <script src="/src/js/app.js"></script>
-</body>
+  </body>
 </html>
